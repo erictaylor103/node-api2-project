@@ -9,11 +9,16 @@ const server = express();
 server.use(express.json()); //needed to parese JSON from the body
 
 //for URL's that start with /api/posts
-//server.use("/api/posts", postsRouter);
+server.use("/api/posts", postsRouter);
 
 
-//GET all the posts and send an html message to the res
-
+//GET all the posts and send an html message to the body
+server.get('/', (req, res) => {
+    res.send(`
+        <h2>Posts API</h>
+        <p>Welcome to the Lambda Posts API</p>
+    `);
+  });
 
 
 server.listen(4000, () => {
